@@ -102,8 +102,108 @@ public class CalculatorAWT extends Frame implements ActionListener
         c.setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
+   public void actionPerformed(ActionEvent e) {
+        String ac = e.getActionCommand();
+        String txt = "";
+
+
+        switch (ac) {
+            case "1":
+                txt += "1";
+                break;
+            case "2":
+                txt += "2";
+                break;
+            case "3":
+                txt += "3";
+                break;
+            case "4":
+                txt += "4";
+                break;
+            case "5":
+                txt += "5";
+                break;
+            case "6":
+                txt += "6";
+                break;
+            case "7":
+                txt += "7";
+                break;
+            case "8":
+                txt += "8";
+                break;
+            case "9":
+                txt += "9";
+                break;
+            case "0":
+                txt += "0";
+                break;
+            case "-":
+                txt += "-";
+                break;
+            case "+":
+                txt += "+";
+                break;
+            case "*":
+                txt += "*";
+                break;
+            case "/":
+                txt += "/";
+                break;
+            case "C":
+                enter.setText("");
+                break;
+            case ".":
+                txt += ".";
+                break;
+            case "=":
+                compute();
+                break;
+        }
+
+        enter.setText(enter.getText() + txt);
+
 
     }
+
+    public void compute() {
+        String txt = enter.getText();
+        double n2;
+        double n1;
+
+        if (txt.contains("+")) {
+            n1 = Double.parseDouble(txt.substring(0, txt.indexOf("+")));
+            n2 = Double.parseDouble(txt.substring(txt.indexOf("+") + 1));
+            enter.setText("" + (n1 + n2));
+            return;
+        }
+        else
+            enter.setText("Math Error");
+        if (txt.contains("-")) {
+            n1 = Double.parseDouble(txt.substring(0, txt.indexOf("-")));
+            n2 = Double.parseDouble(txt.substring(txt.indexOf("-") + 1));
+            enter.setText("" + (n1 - n2));
+            return;
+        }
+        else
+            enter.setText("Math Error");
+        if (txt.contains("*") && (txt.indexOf("*") == txt.lastIndexOf("*"))) {
+            n1 = Double.parseDouble(txt.substring(0, txt.indexOf("*")));
+            n2 = Double.parseDouble(txt.substring(txt.indexOf("*") + 1));
+            enter.setText("" + (n1 * n2));
+            return;
+        }
+        else
+            enter.setText("Math Error");
+
+        if (txt.contains("/") && (txt.indexOf("/") == txt.lastIndexOf("/"))) {
+            n1 = Double.parseDouble(txt.substring(0, txt.indexOf("/")));
+            n2 = Double.parseDouble(txt.substring(txt.indexOf("/") + 1));
+            enter.setText("" + (n1 / n2));
+            return;
+        }
+        else
+            enter.setText("Math Error");
+    }
+}
 }
